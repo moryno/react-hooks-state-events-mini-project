@@ -15,7 +15,7 @@ function TaskList({tasks}) {
   return (
     <div className="tasks">
       {list.map((task, index) => {
-       return <Task key={index} id={index} task={task} onDelete={handleDelete} />
+       return <Task key={index} id={index} text={task.text} category={task.category} onDelete={handleDelete} />
       })}
     </div>
   );

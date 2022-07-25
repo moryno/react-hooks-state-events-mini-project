@@ -14,13 +14,24 @@ function App() {
     setList([...list, newTask])
    
  }
- console.log(list)
+
+ const filteredTask = (category) => {
+ 
+  if(category === "All"){
+    return setList(TASKS)
+  }
+  else {
+    const newTasks = TASKS.filter(task => task.category === category);
+    setList(newTasks);
+  }
+
+ }
 
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter categories={CATEGORIES} />
-      <NewTaskForm onAddTasks={updateTasks} categories={CATEGORIES} />
+      <CategoryFilter categories={CATEGORIES} onFilter={filteredTask} />
+      <NewTaskForm onTaskFormSubmit={updateTasks} categories={CATEGORIES} />
       <TaskList tasks={list} />
     </div>
   );
